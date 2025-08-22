@@ -14,7 +14,10 @@ import androidx.compose.ui.Alignment
 import androidx.lifecycle.viewmodel.compose.viewModel
 import java.util.*
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.filled.Cloud
+import androidx.compose.material.icons.filled.WbSunny
 import androidx.navigation.NavHostController
+import com.example.daysketcher.presentation.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,6 +46,14 @@ fun HomeScreen(userName: String,
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.weight(1f)
             )
+            // Weather button
+            IconButton(onClick = { navController.navigate(Screen.Weather.route) }) {
+                Icon(
+                    imageVector = Icons.Default.WbSunny, // можеш да смениш со Weather икона
+                    contentDescription = "Weather"
+                )
+            }
+
             IconButton(onClick = { showDialog = true }) {
                 Icon(Icons.Default.Add, contentDescription = "Add")
             }
@@ -124,3 +135,5 @@ fun getGreeting(): String {
         else -> "Hello"
     }
 }
+
+

@@ -12,6 +12,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.compose.runtime.getValue
 import androidx.compose.foundation.lazy.items
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.daysketcher.presentation.navigation.Screen
+import com.example.daysketcher.presentation.ui.WeatherScreen
 
 
 @Composable
@@ -42,6 +44,7 @@ fun MainScreen(userName: String,
                     onBack = { navController.popBackStack() }
                 )
             }
+
 //            composable("memoryEntry") {
 //                MemoryEntryScreen(
 //                    viewModel = viewModel,
@@ -54,6 +57,9 @@ fun MainScreen(userName: String,
 //                    onBack = { navController.popBackStack() }
 //                )
 //            }
+            composable(Screen.Weather.route) {
+                WeatherScreen()
+            }
         }
     }
 }

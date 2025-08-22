@@ -30,6 +30,8 @@ kotlin {
             implementation("androidx.room:room-runtime:2.6.1")
             implementation("androidx.room:room-ktx:2.6.1")
 
+            implementation(libs.ktor.client.okhttp)
+
 
 
 
@@ -45,6 +47,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)
+            implementation(libs.ktor.client.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -100,6 +103,24 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    implementation("io.ktor:ktor-client-core:3.2.3")
+    implementation("io.ktor:ktor-client-cio:3.2.3")
+    implementation("io.ktor:ktor-client-okhttp:3.2.3")
+
+    implementation(ktorLibs.client.core)
+
+    // Koin for Kotlin apps
+    implementation("io.insert-koin:koin-core:3.5.6")
+    // Android специфично (за ViewModel + lifecycle integration)
+    implementation("io.insert-koin:koin-android:3.5.6")
+
+// Koin for Jetpack Compose
+    implementation("io.insert-koin:koin-androidx-compose:3.5.6")
+
+    implementation("androidx.compose.runtime:runtime:1.6.8") // или верзијата што ја користиш
+
+
 
 
     add("kspAndroid", libs.androidx.room.compiler)

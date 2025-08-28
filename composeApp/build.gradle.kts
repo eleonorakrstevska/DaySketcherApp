@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.androidx.room)
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 kotlin {
@@ -48,10 +49,15 @@ kotlin {
             implementation(libs.androidx.room.runtime)
             implementation(libs.androidx.sqlite.bundled)
             implementation(libs.ktor.client.core)
+            
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+    }
+    sourceSets.androidMain.dependencies {
+        implementation(kotlin("test"))
     }
 }
 
@@ -107,6 +113,9 @@ dependencies {
     implementation("io.ktor:ktor-client-core:3.2.3")
     implementation("io.ktor:ktor-client-cio:3.2.3")
     implementation("io.ktor:ktor-client-okhttp:3.2.3")
+    implementation("io.ktor:ktor-client-serialization:3.2.3")
+    implementation("io.ktor:ktor-client-content-negotiation:3.2.3")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:3.2.3")
 
     implementation(ktorLibs.client.core)
 
@@ -115,10 +124,21 @@ dependencies {
     // Android специфично (за ViewModel + lifecycle integration)
     implementation("io.insert-koin:koin-android:3.5.6")
 
+//    implementation("io.insert-koin:koin-androidx-viewmodel:3.4.0")
+
 // Koin for Jetpack Compose
     implementation("io.insert-koin:koin-androidx-compose:3.5.6")
 
     implementation("androidx.compose.runtime:runtime:1.6.8") // или верзијата што ја користиш
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+
+    // AndroidX test (ако планираш и instrumented tests)
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
 
 
 
